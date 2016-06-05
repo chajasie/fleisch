@@ -62,7 +62,7 @@
     <script type="text/javascript" src="../MDB/js/jquery-2.2.3.min.js"></script>
 	
 	<!-- Jquery Mobile -->
-	<script type="text/javascript" src="jquery_mobile/jquery.mobile.custom.min"></script>
+	<script type="text/javascript" src="jquery_mobile/jquery.mobile.custom_swipe.min"></script>
 	
     <!-- Bootstrap tooltips -->
     <script type="text/javascript" src="../MDB/js/tether.min.js"></script>
