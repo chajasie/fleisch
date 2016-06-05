@@ -40,7 +40,8 @@
 	<?php 
 		if(isset($_SESSION['loggedin'])){
 			/* Fleisch verwaltung */
-			include("management.php");
+			include("cube.php");
+			//include("management.php");
 		}else{
 			/* Benutzer Schnell-Login */
 			include("benutzer_schnell-login.php");
@@ -59,7 +60,10 @@
 
     <!-- JQuery -->
     <script type="text/javascript" src="../MDB/js/jquery-2.2.3.min.js"></script>
-
+	
+	<!-- Jquery Mobile -->
+	<script type="text/javascript" src="jquery_mobile/jquery.mobile.custom.min"></script>
+	
     <!-- Bootstrap tooltips -->
     <script type="text/javascript" src="../MDB/js/tether.min.js"></script>
 

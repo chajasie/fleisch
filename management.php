@@ -1,9 +1,8 @@
-<a href="/fleisch?logout=1">Logout</a>
-<!-- LOGIN FORM -->
+<!-- LOGIN FORM
 	<hgroup>
 	  <h1>Fleisch Verwaltung</h1>
 	  <h3>Eingabeformular</h3>
-	</hgroup>
+	</hgroup> -->
 	<form action="index.php" method="POST">
 	  <div class="group">
 		<select class="mdb-select"> <!-- Muss noch verbesser werden -->
@@ -13,14 +12,11 @@
 		</select>
 	  </div>
 	  <div class="group">
-		<input type="password"><span class="highlight"></span><span class="bar"></span>
-		<label>Kosten</label>
+		<input type="tel" onkeypress='return event.charCode >= 46 && event.charCode <= 57'><span class="highlight"></span><span class="bar"></span>
+		<label>Kosten in CHF</label>
 	  </div>
-	  <button type="submit" name="submit" class="button buttonBlue">Anmelden
+	  <button type="submit" name="submit" class="button buttonBlue">Eingabe
 		<div class="ripples buttonRipples"><span class="ripplesCircle"></span></div>
 	  </button>
 	</form>
-	<footer><a href="http://www.polymer-project.org/" target="_blank"><img src="https://www.polymer-project.org/images/logos/p-logo.svg"></a>
-	  <p>You Gotta Love <a href="http://www.polymer-project.org/" target="_blank">Google</a></p>
-	</footer>
 <!-- END LOGIN FORM -->
