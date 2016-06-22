@@ -8,6 +8,7 @@
 	
 	
 	//Cube Rotation
+	
 	$("#cube").on("swiperight",function(){
 	  calcRotation(0);
 	});
