@@ -273,5 +273,18 @@ footer img:focus, footer a:focus {
   transform: rotateX(-90deg) translateZ(160px) rotate(180deg); }
 
 /* End Cube */
+/*Select */
+select {
+  border: 1px solid #111;
+  background: transparent;
+  width: 275px;
+  padding: 5px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  height: 45px;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background: url(../img/icons/food_chicken.ico) 96%/15% no-repeat #fff; }
 
 /*# sourceMappingURL=style.css.map */

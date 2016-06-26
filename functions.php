@@ -7,4 +7,10 @@
 							   
 		return $html_benutzer_block;
 	}
+	
+	function zeichne_html_log_block( $logData ){
+		$html_log_block = $logData[0]['preis'];
+							   
+		return $html_log_block;
+	}
 ?>

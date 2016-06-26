@@ -8,7 +8,7 @@
 		<input type="password" id="passwort" name="passwort"><span class="highlight"></span><span class="bar"></span>
 		<label>Passwort</label>
 	  </div>
-	  <button type="submit" name="submit" class="button buttonBlue">Anmelden
+	  <button type="submit" name="login_submit" class="button buttonBlue">Anmelden
 		<div class="ripples buttonRipples"><span class="ripplesCircle"></span></div>
 	  </button>
 	</form>

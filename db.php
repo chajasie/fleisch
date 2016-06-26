@@ -53,6 +53,22 @@
 			
 			return $select_result;	
 		}
+		//Input Function
+		function input($table = "", $inputArray = array()){
+			if(empty($inputArray) || $table === "") return false;
+			
+			// Create connection
+			$link = $this->getConnection();
+			if($this->select('select 1 from `' . $table . '` LIMIT 1') === false) return false;
+			
+			$keys   = implode(",", array_keys($inputArray));
+			$values = implode("','", $inputArray);
+			
+			$sql_befehl = "INSERT INTO " . $table . " (" . $keys .") VALUES ('" . $values . "')";
+			
+			if (mysql_query($sql_befehl, $link) === true) return true;
+			return false;
+		}
 		
 		//GET Functions
 		function getConnection(){
