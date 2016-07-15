@@ -50,6 +50,13 @@
 			return $expenses;
 		}
 		
+		function getExpensesFromFoodGroup($foodGroup = 0){
+			//under construction
+			if($foodGroup == 0) return false;
+			$foods = $this->getAllFoodofGroup();
+		}
+		
+		
 		/* Essen Verwaltung */
 		function getFoodFromId($foodId = ""){
 			if($foodId === "") return false;
@@ -64,6 +71,10 @@
 			
 			return $this->db->select($sql_befehl)[0]['gruppe'];
 			
+		}
+		
+		function getAllFoodofGroup(){//under constructions
+			//gibt einen array mit allen food ids zurück
 		}
 		
 		/*Benutzer verwaltung*/
