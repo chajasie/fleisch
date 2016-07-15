@@ -1,5 +1,5 @@
  $(document).ready(function() {
-	 
+	 window.rotation = 0;
 	 //Benutzerbild wurde angeklickt
 	$( ".benutzer-bild a" ).click(function() {
 		benutzername = $(this).attr("alt");
@@ -10,15 +10,16 @@
 	//Cube Rotation
 	
 	$("#cube").on("swiperight",function(){
-	  calcRotation(0);
-	});
-	
-	$("#cube").on("swipeleft",function(){
 	  calcRotation(90);
 	});
 	
+	$("#cube").on("swipeleft",function(){
+	  calcRotation(-90);
+	});
+	
 	function calcRotation(rot){
-           $("#cube").css("transform", "rotateY(-" + rot + "deg)");
+		   rotation = rotation + rot;
+           $("#cube").css("transform", "rotateY(" + rotation + "deg)");
     }
 	
  });

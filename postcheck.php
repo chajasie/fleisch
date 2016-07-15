@@ -18,8 +18,12 @@
 			$inputArray['benutzer'] = $benutzer['id'];
 			$inputArray['bezeichnung'] = $_POST['log_bezeichnung'];
 			$inputArray['preis'] = $_POST['log_preis'];
-
-			$verwaltung->addNewRecord($inputArray);
+			
+			
+			$lastId = $verwaltung->addNewRecord($inputArray);
+			
+			//Für welche Gruppe wurde es bezahlt?
+			$verwaltung->payedFor($lastId, $inputArray['bezeichnung']);
 		}
 	}
 	

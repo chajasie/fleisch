@@ -66,7 +66,7 @@
 			
 			$sql_befehl = "INSERT INTO " . $table . " (" . $keys .") VALUES ('" . $values . "')";
 			
-			if (mysql_query($sql_befehl, $link) === true) return true;
+			if (mysql_query($sql_befehl, $link) === true) return mysql_insert_id();
 			return false;
 		}
 		

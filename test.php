@@ -14,7 +14,7 @@
 	$inputArray['preis'] = "60.50";
 	*/
 	
-	var_dump($verwaltung->getAllRecordsofUser("Ronald Aus der Au"));
+	var_dump($verwaltung->getFoodFromId(1));
 	//var_dump($db->input("log", $inputArray));
 	
 	//var_dump($verwaltung->getAllUsers());

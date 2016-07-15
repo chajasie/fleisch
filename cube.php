@@ -9,6 +9,7 @@
       <?php include("last_payments.php"); ?>
     </div>
     <div class="face four">
+		<?php include("schulden.php"); ?>
     </div>
     <div class="face five">
     </div>
