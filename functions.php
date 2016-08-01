@@ -11,9 +11,9 @@
 	function zeichne_html_log_block( $verwaltung ){
 		
 		$logData = $verwaltung->getAllRecordsofUser($_SESSION["benutzer"]);
-		$html_log_block  = "<table class='table table-striped'><thead><tr><th>Bezeichnung</th><th>Preis</th></tr></thead><tbody>";
+		$html_log_block  = "<table class='table table-striped'><thead><tr><th>Aktion</th><th>Preis</th></tr></thead><tbody>";
 		for($i=0;$i<count($logData);$i++){
-			$html_log_block .= "<tr><td>" . $verwaltung->getFoodFromId($logData[$i]['bezeichnung']) . "</td><td>" . $logData[$i]['preis'] . "</td></tr>";
+			$html_log_block .= "<tr><td>" . $verwaltung->getFoodFromId($logData[$i]['aktion']) . "</td><td>" . $logData[$i]['preis'] . "</td></tr>";
 		}
 		$html_log_block .= "</tbody></table>";
 							   

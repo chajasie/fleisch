@@ -1,22 +1,15 @@
 <?php
 	if(isset($_POST['login_submit'])){
 		//ein wenig unsicher
-		$benutzer = $verwaltung->getUserfromName($_POST['benutzername']);
-		if(!empty($benutzer)){
-			//Einloggen
-			if($benutzer['passwort'] === $_POST['passwort']){
-				$_SESSION['loggedin'] = 1;
-				$_SESSION['benutzer'] = $benutzer['name'];
-			}
-		}
+		$verwaltung->loginUser($_POST['benutzername']);
 	}
 	if(isset($_POST['input_submit'])){
 		$benutzer = $verwaltung->getUserfromName($_SESSION['benutzer']);
-		if(!empty($benutzer)){
+		if(!empty($benutzer) && $_POST['log_preis'] > 0){
 			$inputArray = array();
 			
 			$inputArray['benutzer'] = $benutzer['id'];
-			$inputArray['bezeichnung'] = $_POST['log_bezeichnung'];
+			$inputArray['aktion'] = $_POST['log_aktion'];
 			$inputArray['preis'] = $_POST['log_preis'];
 			
 			
@@ -29,6 +22,6 @@
 	
 	//Logout
 	if (isset($_GET['logout'])){
-		unset($_SESSION['loggedin']);
+		$verwaltung->logoutUser();
 	}
 ?>

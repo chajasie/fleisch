@@ -3,10 +3,12 @@
 		
 		private $db;
 		private $allUsers;
+		private $activeUser;
 		
 		function __construct($db){
 			$this->db = $db;
 			$this->setAllUsers();
+			if($_SESSION['loggedin'] === 1) $this->activeUser = $this->getUserfromName($_SESSION['benutzer']);
 		}
 		
 		/* Einkäufe Verwaltung */
@@ -42,39 +44,50 @@
 		function getExpenses($benutzer = ""){
 			if(empty($benutzer)) return false;
 			$expenses = 0;
-			$log = $this->getAllRecordsofUser($benutzer, 0);
+			$log = $this->getAllRecordsofUser($this->activeUser['name'], 0);
 			
 			foreach ($log as $essen ) {
+				if($essen['aktion'] == 1 || $essen['aktion'] == 2 )
 				$expenses += $essen['preis'];
 			}
 			return $expenses;
 		}
 		
 		function getExpensesFromFoodGroup($foodGroup = 0){
-			//under construction
-			if($foodGroup == 0) return false;
-			$foods = $this->getAllFoodofGroup();
-		}
-		
-		
-		/* Essen Verwaltung */
-		function getFoodFromId($foodId = ""){
-			if($foodId === "") return false;
-			$sql_befehl = "Select * from essen WHERE id='" . $foodId. "'";
+			if($foodGroup === 0) return false;
+			$sql_befehl = "Select * from log WHERE aktion='" . $foodGroup. "' and benutzer ='" . $this->activeUser['id']. "'";
+			$log = $this->db->select($sql_befehl);
+			$expenses = 0;
 			
-			return $this->db->select($sql_befehl)[0]['name'];
+			foreach ($log as $aktion ) {
+				$expenses += $aktion['preis'];
+			}
+			return $expenses;
 		}
 		
-		function getFoodGroup($foodId){
-			if(empty($foodId)) return false;
-			$sql_befehl = "Select * from essen WHERE id='" . $foodId. "'";
+		
+		/* Aktion Verwaltung */
+		function getFoodFromId($aktionId = ""){
+			if($aktionId === "") return false;
+			$sql_befehl = "Select * from aktion WHERE id='" . $aktionId. "'";
+			
+			return $this->db->select($sql_befehl)[0]['aktion'];
+		}
+		
+		function getFoodGroup($aktionId){
+			if(empty($aktionId)) return false;
+			$sql_befehl = "Select * from essen WHERE id='" . $aktionId. "'";
 			
 			return $this->db->select($sql_befehl)[0]['gruppe'];
 			
 		}
 		
-		function getAllFoodofGroup(){//under constructions
+		function getAllFoodofGroup($foodGroup = 0){
 			//gibt einen array mit allen food ids zurück
+			if($foodGroup === 0) return false;
+			
+			$sql_befehl = "Select * from essen WHERE gruppe='" . $foodGroup. "'";
+			return $this->db->select($sql_befehl);
 		}
 		
 		/*Benutzer verwaltung*/
@@ -82,6 +95,25 @@
 		function setAllUsers(){
 			$sql_befehl = "Select * from benutzer";
 			$this->allUsers = $this->db->select($sql_befehl);
+		}
+		
+		function loginUser($benutzerName){
+			$benutzer = $this->getUserfromName($_POST['benutzername']);
+			if(!empty($benutzer)){
+				//Einloggen
+				if($benutzer['passwort'] === $_POST['passwort']){
+					$_SESSION['loggedin'] = 1;
+					$_SESSION['benutzer'] = $benutzerName;
+					$this->activeUser=$benutzer;
+				}
+			}
+		}
+		
+		function logoutUser(){
+			unset($_SESSION['loggedin']);
+			unset($_SESSION['benutzer']);
+			
+			$this->activeUser="";
 		}
 
 		//GET Functions

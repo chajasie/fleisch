@@ -5,7 +5,7 @@
 	</hgroup> -->
 	<form action="index.php" method="POST">
 	  <div class="group">
-		<select name="log_bezeichnung" class="mdb-select"> <!-- Muss noch verbesser werden -->
+		<select name="log_aktion" class="mdb-select"> <!-- Muss noch verbesser werden -->
 			<option value="" disabled>Fleisch oder Vegisache?</option>
 			<option value="1" selected>Fleisch/ Aufschnitt</option>
 			<option value="2">Vegi</option>
